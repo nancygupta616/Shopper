@@ -17,11 +17,11 @@ const LoginSignup = () => {
   const login = async () => {
     console.log("Login Func",formData);
     let responseData;
-    await fetch('https://shopper-backend-hwag.onrender.com/login',{
+    await fetch(`${process.env.REACT_APP_API_URL}/login`,{
       method: 'POST',
       headers:{
-        Accept: 'application/form-data',
-        'Content-Type':'application/json',
+        Accept: 'application/json',
+      'Content-Type': 'application/json',
       },
       body: JSON.stringify(formData),
     }).then((response)=> response.json())
@@ -39,12 +39,12 @@ const LoginSignup = () => {
   const signup = async () => {
     console.log("SignUp Func",formData);
     let responseData;
-    await fetch('https://shopper-backend-hwag.onrender.com/signup',{
+    await fetch(`${process.env.REACT_APP_API_URL}/signup`,{
       method: 'POST',
-      headers:{
-        Accept: 'application/form-data',
-        'Content-Type':'apllication/json',
-      },
+     headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
       body: JSON.stringify(formData),
     }).then((response)=> response.json())
     .then((data)=>responseData=data);
